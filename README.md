@@ -1,75 +1,299 @@
-<header>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Links</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://lowcygier.pl/wp-content/uploads/2024/05/minecraft-facebook-temp-720x378.jpg');
+            background-size: cover;
+            background-position: top;
+            color: #000;
+        }
+        h1 {
+            color: green;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 50px; /* Zwiekszony rozmiar napisu Minecraft */
+        }
+        .links {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .links a {
+            display: block;
+            color: black;
+            text-decoration: none;
+            font-size: 30px; /* Zwiekszony rozmiar linków */
+            margin: 15px 0;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        #context-menu {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            font-size: 20px; /* Zwiekszony rozmiar tekstu w menu kontekstowym */
+        }
+        #context-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 10px;
+        }
+        #context-menu ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #context-menu ul li:hover {
+            background-color: #f0f0f0;
+        }
+        #settings-button {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://cdn.pixabay.com/photo/2015/07/23/13/08/gear-856921_1280.png');
+            background-size: 50px 50px; /* Zwiekszona ikona ustawien */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        #language-menu {
+            display: none;
+            position: fixed;
+            top: 60px;
+            right: 10px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            font-size: 20px; /* Zwiekszony rozmiar tekstu w menu jezykowym */
+        }
+        #language-menu ul {
+            list-style: none;
+            margin: 0;
+            padding: 10px;
+        }
+        #language-menu ul li {
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #language-menu ul li:hover {
+            background-color: #f0f0f0;
+        }
+        #notepad-button {
+            position: fixed;
+            bottom: 60px;
+            right: 10px;
+            width: 60px;
+            height: 60px;
+            background-image: url('https://icons-for-free.com/iff/png/512/notepad-131994967967763378.png');
+            background-size: 50px 50px; /* Zwiekszona ikona notatnika */
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+        #notepad {
+            display: none;
+            position: fixed;
+            bottom: 110px;
+            right: 10px;
+            width: 350px;
+            height: 250px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            overflow-y: auto;
+            z-index: 1000;
+            font-size: 18px; /* Zwiekszony rozmiar tekstu w notatniku */
+        }
+        .footer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px; /* Zwiekszony rozmiar tekstu w stopce */
+        }
+        .footer a {
+            color: blue;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="title">Minecraft</h1>
 
-<!--
-  <<< Author notes: Course header >>>
-  Include a 1280×640 image, course title in sentence case, and a concise description in emphasis.
-  In your repository settings: enable template repository, add your 1280×640 social image, auto delete head branches.
-  Add your open source license, GitHub uses MIT license.
--->
+    <div class="links">
+        <a href="https://eaglercraft.com/mc/1.8.8/" target="_blank" id="link-1">1.8.8</a>
+        <a href="https://eaglercraft.com/mc/scratch/" target="_blank" id="link-2">scratch</a>
+    </div>
 
-# GitHub Pages
+    <div id="context-menu">
+        <ul>
+            <li onclick="goToServers()" id="context-servers">Serwery</li>
+            <li onclick="goToCommands()" id="context-commands">Komendy</li>
+            <li onclick="goToTextures()" id="context-textures">Texturki</li>
+        </ul>
+    </div>
 
-_Create a site or blog from your GitHub repositories with GitHub Pages._
+    <button id="settings-button"></button>
 
-</header>
+    <button id="notepad-button"></button>
 
-<!--
-  <<< Author notes: Course start >>>
-  Include start button, a note about Actions minutes,
-  and tell the learner why they should take the course.
--->
+    <div id="notepad">
+        <h3 id="notepad-title">Ciekawe Seedy</h3>
+        <p><strong id="version-1-8-8">1.8.8:</strong></p>
+        <ul id="seeds-1-8-8">
+            <li>Seed 1: 123456789</li>
+            <li>Seed 2: 987654321</li>
+            <li>Seed 3: 456123789</li>
+        </ul>
+        <p><strong id="version-scratch">Scratch Edition:</strong></p>
+        <ul id="seeds-scratch">
+            <li>Seed A: abc123</li>
+            <li>Seed B: xyz789</li>
+            <li>Seed C: minecraft2024</li>
+        </ul>
+    </div>
 
-## Welcome
+    <div id="language-menu">
+        <ul>
+            <li onclick="setLanguage('pl')">Polski (PL)</li>
+            <li onclick="setLanguage('en')">Angielski (ANG)</li>
+            <li onclick="setLanguage('de')">Niemiecki (DEU)</li>
+        </ul>
+    </div>
 
-With GitHub Pages, you can host project blogs, documentation, resumes, portfolios, or any other static content you'd like. Your GitHub repository can easily become its own website. In this course, we'll show you how to set up your own site or blog using GitHub Pages.
+    <div class="footer">
+        <span id="footer-text">Stworzone przez Noah Kieda. Minecraft wyprodukowany przez <a href="https://eaglercraft.com/" target="_blank" id="eaglecraft-link">Eaglecraft</a>.</span>
+    </div>
 
-- **Who is this for**: Beginners, students, project maintainers, small businesses.
-- **What you'll learn**: How to build a GitHub Pages site.
-- **What you'll build**: We'll build a simple GitHub Pages site with a blog. We'll use [Jekyll](https://jekyllrb.com), a static site generator.
-- **Prerequisites**: If you need to learn about branches, commits, and pull requests, take [Introduction to GitHub](https://github.com/skills/introduction-to-github) first.
-- **How long**: This course takes less than one hour to complete.
+    <script>
+        const contextMenu = document.getElementById('context-menu');
+        const languageMenu = document.getElementById('language-menu');
+        const settingsButton = document.getElementById('settings-button');
+        const notepadButton = document.getElementById('notepad-button');
+        const notepad = document.getElementById('notepad');
 
-In this course, you will:
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            contextMenu.style.top = `${e.pageY}px`;
+            contextMenu.style.left = `${e.pageX}px`;
+            contextMenu.style.display = 'block';
+        });
 
-1. Enable GitHub Pages
-2. Configure your site
-3. Customize your home page
-4. Create a blog post
-5. Merge your pull request
+        document.addEventListener('click', function () {
+            contextMenu.style.display = 'none';
+            languageMenu.style.display = 'none';
+            notepad.style.display = 'none';
+        });
 
-### How to start this course
+        settingsButton.addEventListener('click', function (e) {
+            e.stopPropagation();
+            languageMenu.style.display = languageMenu.style.display === 'block' ? 'none' : 'block';
+        });
 
-<!-- For start course, run in JavaScript:
-'https://github.com/new?' + new URLSearchParams({
-  template_owner: 'skills',
-  template_name: 'github-pages',
-  owner: '@me',
-  name: 'skills-github-pages',
-  description: 'My clone repository',
-  visibility: 'public',
-}).toString()
--->
+        notepadButton.addEventListener('click', function (e) {
+            e.stopPropagation();
+            notepad.style.display = notepad.style.display === 'block' ? 'none' : 'block';
+        });
 
-[![start-course](https://user-images.githubusercontent.com/1221423/235727646-4a590299-ffe5-480d-8cd5-8194ea184546.svg)](https://github.com/new?template_owner=skills&template_name=github-pages&owner=%40me&name=skills-github-pages&description=My+clone+repository&visibility=public)
+        function goToServers() {
+            window.open('https://servers.eaglercraft.com/', '_blank');
+        }
 
-1. Right-click **Start course** and open the link in a new tab.
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.com/en/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-3. After your new repository is created, wait about 20 seconds, then refresh the page. Follow the step-by-step instructions in the new repository's README.
+        function goToCommands() {
+            window.open('https://www.gamergeeks.net/', '_blank');
+        }
 
-<footer>
+        function goToTextures() {
+            window.open('https://resourcepack.net/res/minecraft-1-8-8-resource-packs/page/3/#gsc.tab=0', '_blank');
+        }
 
-<!--
-  <<< Author notes: Footer >>>
-  Add a link to get support, GitHub status page, code of conduct, license link.
--->
+        function setLanguage(lang) {
+            const translations = {
+                pl: {
+                    title: 'Minecraft',
+                    links: ['1.8.8', 'scratch'],
+                    contextMenu: ['Serwery', 'Komendy', 'Texturki'],
+                    notepadTitle: 'Ciekawe Seedy',
+                    version1_8_8: '1.8.8:',
+                    seeds1_8_8: ['Seed 1: 123456789', 'Seed 2: 987654321', 'Seed 3: 456123789'],
+                    versionScratch: 'Scratch Edition:',
+                    seedsScratch: ['Seed A: abc123', 'Seed B: xyz789', 'Seed C: minecraft2024'],
+                    footerText: 'Stworzone przez Noah Kieda. Minecraft wyprodukowany przez Eaglecraft.',
+                    eaglecraftLink: 'https://eaglercraft.com/'
+                },
+                en: {
+                    title: 'Minecraft',
+                    links: ['1.8.8', 'scratch'],
+                    contextMenu: ['Servers', 'Commands', 'Textures'],
+                    notepadTitle: 'Interesting Seeds',
+                    version1_8_8: '1.8.8:',
+                    seeds1_8_8: ['Seed 1: 123456789', 'Seed 2: 987654321', 'Seed 3: 456123789'],
+                    versionScratch: 'Scratch Edition:',
+                    seedsScratch: ['Seed A: abc123', 'Seed B: xyz789', 'Seed C: minecraft2024'],
+                    footerText: 'Created by Noah Kieda. Minecraft produced by Eaglecraft.',
+                    eaglecraftLink: 'https://eaglercraft.com/'
+                },
+                de: {
+                    title: 'Minecraft',
+                    links: ['1.8.8', 'scratch'],
+                    contextMenu: ['Server', 'Befehle', 'Texturen'],
+                    notepadTitle: 'Interessante Seeds',
+                    version1_8_8: '1.8.8:',
+                    seeds1_8_8: ['Seed 1: 123456789', 'Seed 2: 987654321', 'Seed 3: 456123789'],
+                    versionScratch: 'Scratch Edition:',
+                    seedsScratch: ['Seed A: abc123', 'Seed B: xyz789', 'Seed C: minecraft2024'],
+                    footerText: 'Erstellt von Noah Kieda. Minecraft produziert von Eaglecraft.',
+                    eaglecraftLink: 'https://eaglercraft.com/'
+                }
+            };
 
----
+            const translation = translations[lang];
 
-Get help: [Post in our discussion board](https://github.com/orgs/skills/discussions/categories/github-pages) &bull; [Review the GitHub status page](https://www.githubstatus.com/)
+            document.getElementById('title').textContent = translation.title;
+            document.getElementById('link-1').textContent = translation.links[0];
+            document.getElementById('link-2').textContent = translation.links[1];
+            document.getElementById('context-servers').textContent = translation.contextMenu[0];
+            document.getElementById('context-commands').textContent = translation.contextMenu[1];
+            document.getElementById('context-textures').textContent = translation.contextMenu[2];
+            document.getElementById('notepad-title').textContent = translation.notepadTitle;
+            document.getElementById('version-1-8-8').textContent = translation.version1_8_8;
+            document.getElementById('version-scratch').textContent = translation.versionScratch;
+            document.getElementById('footer-text').innerHTML = `${translation.footerText} Minecraft produced by <a href="${translation.eaglecraftLink}" target="_blank" id="eaglecraft-link">Eaglecraft</a>.`;
 
-&copy; 2023 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+            const seeds1_8_8 = document.getElementById('seeds-1-8-8');
+            const seedsScratch = document.getElementById('seeds-scratch');
 
-</footer>
+            seeds1_8_8.innerHTML = '';
+            seedsScratch.innerHTML = '';
+
+            translation.seeds1_8_8.forEach(seed => {
+                const li = document.createElement('li');
+                li.textContent = seed;
+                seeds1_8_8.appendChild(li);
+            });
+
+            translation.seedsScratch.forEach(seed => {
+                const li = document.createElement('li');
+                li.textContent = seed;
+                seedsScratch.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
+
